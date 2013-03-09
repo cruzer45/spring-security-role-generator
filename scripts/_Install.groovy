@@ -8,3 +8,6 @@
 //
 //    ant.mkdir(dir:"${basedir}/grails-app/jobs")
 //
+event "StatusFinal", ["To install Spring Security Role Generator run the script 'generate-roles' \n
+						(e.g., on command line 'grails generate-roles')!\n
+						Copy the output to your Bootstrap file."]

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Spring Security Role Generator
 ==============================
 
@@ -17,3 +18,9 @@ It does this in two ways:
         generate-roles com.sample.MyClass
 
     You can then take the generated statements and add it to your bootstrap for example.
+=======
+spring-security-role-generator
+==============================
+
+spring-security-role-generator
+>>>>>>> 3b13cf2f5ca847ce6d20dd9cc630b468741f0f0a

@@ -1,19 +1,17 @@
-import org.codehaus.groovy.grails.scaffolding.*
 import grails.util.GrailsNameUtils
 
-includeTargets << grailsScript("Init")
 includeTargets << grailsScript("_GrailsBootstrap")
 includeTargets << grailsScript("_GrailsCreateArtifacts")
 
 generateForName = null
 
-target(main: "This script will generate the security roles for all of your classes.") {
+target(generateRoles: "This script will generate the security roles for all of your classes.") {
 	depends(checkVersion, parseArguments, packageApp)
-	promptForName(type: "Domain Class") 
+	promptForName(type: "Domain Class")
 	generateSecurityRoles()
 }
 
-setDefaultTarget(main)
+setDefaultTarget(generateRoles)
 
 target (generateSecurityRoles:"Generate the appropriate roles"){
 	try {
@@ -77,7 +75,6 @@ target(uberGenerate: "Generates security roles for all domain classes") {
     }
 }
 
-
 def generateForDomainClass(domainClass) {
 	def roleClass = grailsApp.config.grails.plugins.springsecurity.authority.className
     // print generic messages for this domain class
@@ -89,4 +86,3 @@ def generateForDomainClass(domainClass) {
     println "new ${roleClass}(authority: 'ROLE_DELETE_${domainClass.shortName.toUpperCase()}').save(failOnError: true)"
     println ""
 }
-

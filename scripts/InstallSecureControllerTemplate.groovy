@@ -1,8 +1,8 @@
 includeTargets << grailsScript("_GrailsInit")
 
-def confirmAll = false
+boolean confirmAll = false
 
-target(main: "Install the secure controller template.") {
+target(installSecureControllerTemplate: "Install the secure controller template.") {
 	depends(checkVersion, parseArguments)
 
     // copy scaffolding files into project
@@ -11,18 +11,18 @@ target(main: "Install the secure controller template.") {
     copy(sourceDir, targetDir, "scaffolding templates")
 }
 
-setDefaultTarget(main)
+setDefaultTarget(installSecureControllerTemplate)
 
 copy = {String source, String target, String confirmText ->
-	def overwrite = confirmAll ? true : false
-	def input = ""
+	boolean overwrite = confirmAll
+	String input = ""
 
 	// only if dir already exists in, ask to overwrite it
 	if (new File(target).exists()) {
 		// TODO: copy existing files / dirs into a "trash" directory
 		if (isInteractive && !overwrite){
 			input = grailsConsole.userInput('Overwrite '+confirmText+'? ', ["y","n","a"] as String[])
-		} 				
+		}
 
 		if (!isInteractive || input == "y" || input == "a" ){
 			overwrite = true
@@ -37,15 +37,15 @@ copy = {String source, String target, String confirmText ->
 		ant.mkdir(dir: target)
 		overwrite = true	// nothing to overwrite but will be copied (state this in the event message)
 	}
-	
+
 	if (new File(source).isDirectory()) {
-		ant.copy(todir: "$target", overwrite: overwrite) { 
-			fileset dir:  "$source" 
+		ant.copy(todir: "$target", overwrite: overwrite) {
+			fileset dir:  "$source"
 		}
 	}
 	else{
 		ant.copy(todir: "$target", overwrite: overwrite)
-		{ fileset file: "$source" }  
+		{ fileset file: "$source" }
 	}
 
 	event "StatusUpdate", ["... ${confirmText} ${overwrite ? '' : 'not '}installed!"]

@@ -13,11 +13,11 @@ class SpringSecurityRoleGeneratorGrailsPlugin {
     def author = "Maurice Rogers"
     def authorEmail = "maurice@mauricerogers.com"
     def description = '''\
-This plugin facilitates easier implementation of the spring security core plugin\'s anotated controllers.
+This plugin facilitates easier implementation of the spring security core plugin\'s annotated controllers.
 It does this in two ways:
 
-1.  It provides a controller template that can be used during scafolding.
-    This controller comes preconfigured with CREATE VIEW EDIT and DELETE anotations for the given class.
+1.  It provides a controller template that can be used during scaffolding.
+    This controller comes preconfigured with CREATE VIEW EDIT and DELETE annotations for the given class.
 
 2.  To tie into the controller above a generate-roles script is provided that will generate the 
     statements to create the roles for each class.
@@ -46,10 +46,10 @@ It does this in two ways:
 //    def developers = [ [ name: "Joe Bloggs", email: "joe@bloggs.net" ]]
 
     // Location of the plugin's issue tracker.
-//    def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPMYPLUGIN" ]
+    def issueManagement = [ system: "GitHub", url: "https://github.com/cruzer45/spring-security-role-generator/issues" ]
 
     // Online location of the plugin's browseable source code.
-//    def scm = [ url: "http://svn.codehaus.org/grails-plugins/" ]
+    def scm = [ url: "https://github.com/cruzer45/spring-security-role-generator" ]
 
     def doWithWebDescriptor = { xml ->
         // TODO Implement additions to web.xml (optional), this event occurs before

@@ -2,7 +2,6 @@
 *Db.properties
 *Db.script
 .settings
-stacktrace.log
 /*.zip
 /plugin.xml
 /*.log
@@ -11,7 +10,6 @@ stacktrace.log
 .DS_Store
 /target/
 /out/
-/web-app/plugins
-/web-app/WEB-INF/classes
 /.link_to_grails_plugins/
 /target-eclipse/
+web-app

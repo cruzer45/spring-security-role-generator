@@ -17,3 +17,29 @@ It does this in two ways:
         generate-roles com.sample.MyClass
 
     You can then take the generated statements and add it to your bootstrap for example.
+
+
+The controller template
+-----------------------
+
+The plugin provides a custom controller template with the annotations already in place.
+you  can install it by running:
+
+		install-secure-controller-template
+
+This will copy the template into your src/templates folder.
+You can further customize it from there.
+
+For people that already have a custom controller template, you can easily add the annotations to your template. 
+Following the same conventions you simply add the import:
+
+		import grails.plugins.springsecurity.Secured
+
+Then add the appropriate annotations to your methods from the list below.
+		
+		@Secured('ROLE_CREATE_${className.toUpperCase()}')
+		@Secured('ROLE_VIEW_${className.toUpperCase()}')
+		@Secured('ROLE_EDIT_${className.toUpperCase()}')
+		@Secured('ROLE_DELETE_${className.toUpperCase()}')
+
+Thats all it takes to secure your applications.
